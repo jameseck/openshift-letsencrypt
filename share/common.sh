@@ -115,7 +115,7 @@ route_is_valid() {
     local magic="openshift-letsencrypt"
 
     echo "$magic" > /var/www/acme-challenge/.owner
-    test "$(curl -Lfs "$domain/.well-known/acme-challenge/.owner")" = "$magic"
+    test "$(curl -Lkfs "$domain/.well-known/acme-challenge/.owner")" = "$magic"
 }
 
 patch_route() {
