@@ -29,11 +29,11 @@ manage_route() {
     local managed=no
     is_true "$ACME_MANAGE" && managed=yes
     local patch; patch="$( jq -n --arg managed "$managed" '
-    { "metadata": { 
+    { "metadata": {
         "labels": {
           "butter.sh/letsencrypt-managed": $managed
         }
-      } 
+      }
     }')"
     log "patching route '$routeselflink' with patch '$patch'"
 
@@ -43,7 +43,7 @@ manage_route() {
 }
 
 parseopts() {
-    local optspec="l:n:vh-:" 
+    local optspec="l:n:vh-:"
     local val
     while getopts "$optspec" flag; do
         case "$flag" in
@@ -117,7 +117,7 @@ parseopts() {
 main() {
     parseopts "$@"
     for route in "${ROUTES[@]}"; do
-        manage_route "$(route_uri "$route" "$NAMESPACE")" 
+        manage_route "$(route_uri "$route" "$NAMESPACE")"
     done
 }
 
