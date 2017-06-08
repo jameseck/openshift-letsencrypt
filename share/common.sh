@@ -120,8 +120,7 @@ route_is_valid() {
 
 patch_route() {
     api_call "$1" --request PATCH --data "$2" \
-        -H 'Content-Type: application/merge-patch+json' \
-        > /dev/null
+        -H 'Content-Type: application/merge-patch+json'
 }
 
 get_certs_from_route() {
