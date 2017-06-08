@@ -18,7 +18,7 @@ process_routes() {
 while true
 do
     if ! process_routes; then
-        err "Failure to watch routes; exiting."
-        exit 1
+        err "Failure to watch routes; trying again (forever)"
+#        exit 1
     fi
 done
